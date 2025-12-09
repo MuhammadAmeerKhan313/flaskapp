@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Knowlytics | Home</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/templatemo-grad-school.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/owl.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/lightbox.css') }}">
+    <style>
+      .navbar-nav .nav-link {
+        font-weight: bold;
+        font-style: normal;
+        color: white;
+      }
+      .navbar-nav .nav-link:hover {
+        color: #f5a425 !important;
+      }
+      .navbar-nav .nav-link.active {
+        color: #f5a425 !important;
+      }
+      .logreges {
+        border: 2px solid #f5a425;
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: transparent; /* optional, or use a dark background */
+      }
+      .logreges:hover{
+        color: #f5a425;
+      }
+      .sessionname{
+        text-decoration: underline  #f5a425;
+      }
+      .topbar{
+        background-color: rgb(22, 39, 61);
+      }
+      .footer{
+        background-color: #0c1228
+      }
+      .bottomfooter{
+        background-color: rgb(22, 39, 61);
+      }
+      .perpreform{
+        background-color: #0c1228
+      }
+      body{
+        background-color: rgb(22, 39, 61);
+
+      }
+      .card-header h2 {
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+    
+      .form-control:focus {
+        border-color: #f5a425;
+        box-shadow: 0 0 0 0.2rem rgba(245, 164, 37, 0.25);
+      }
+    
+      .btn-primary {
+        background-color: #f5a425;
+        border-color: #f5a425;
+        font-weight: bold;
+      }
+    
+      .btn-primary:hover {
+        border-color: #d48e12;
+        background-color: #0c1228; /* keep background unchanged */
+      }
+      .cardheader{
+        background-color: #0c1228
+      }
+      .cardbody{
+        background-color: rgb(22, 39, 61);
+      }
+      .labelhead{
+        color: white;
+      }
+    </style>
+</head>
+<body>
+  <!-- Header Start -->
+    <div class=" fixed-top">
+      <div class="container-fluid topbar" >
+        <div class="row py-2 px-lg-5">
+          <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+              <div class="d-inline-flex align-items-center text-white">
+                  <small><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</small>
+                  <small class="px-3">|</small>
+                  <small><i class="fa fa-envelope mr-2"></i>info@example.com</small>
+              </div>
+          </div>
+          <div class="col-lg-6 text-center text-lg-right">
+              <div class="d-inline-flex align-items-center">
+                  <a class="text-white px-2" href="https://www.facebook.com/ ">
+                      <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a class="text-white px-2" href="https://www.x.com/ ">
+                      <i class="fab fa-twitter"></i>
+                  </a>
+                  <a class="text-white px-2" href="https://www.linkedin.com/ ">
+                      <i class="fab fa-linkedin-in"></i>
+                  </a>
+                  <a class="text-white px-2" href="https://www.instagram.com/ ">
+                      <i class="fab fa-instagram"></i>
+                  </a>
+                  <a class="text-white pl-2" href="https://www.youtube.com/ ">
+                      <i class="fab fa-youtube"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+    </div>
+  <div class="container-fluid p-0" style="background-color: #0c1228">
+    <nav class="navbar navbar-expand-lg  clearfix navbar-dark py-3 py-lg-0 px-lg-5" style="height: 80px">
+      <a href="{{ url_for('index') }}" class="navbar-brand ml-lg-3">
+        <h1 class="m-0 text-uppercase">
+          <b style="font-style: normal; color: #f5a425">Know</b><b>Lytics</b>
+        </h1>
+      </a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
+        {% if 'username' in session %}
+        <div class="navbar-nav mx-auto py-0">
+          <a href="{{ url_for('index') }}" class="nav-item nav-link active">Home</a>
+          <a href="{{ url_for('prediction') }}" class="nav-item nav-link" style="font-weight: bold;">Predict</a>
+          <a href="{{ url_for('about') }}" class="nav-item nav-link" style="font-weight: bold;">About</a>
+          <a href="{{ url_for('contact') }}" class="nav-item nav-link" style="font-weight: bold;">Contact</a>
+          <a href="{{ url_for('documentation') }}" class="nav-item nav-link" style="font-weight: bold;">Documentation</a>
+        </div>
+        <span class="navbar-text me-3 mr-5 text-white sessionname" style="font-weight: bold;">Hi, {{ session['username'] }}!</span>
+          <a href="{{ url_for('logout') }}" class="btn  py-2 px-4 d-none d-lg-block logreges"><b>Logout</b></a>
+        {% else %}
+          <div class="navbar-nav mx-auto py-0">
+            <a href="{{ url_for('login') }}" class="nav-item nav-link logreges" style="font-weight: bold;">Login</a>
+            <a href="{{ url_for('register') }}" class="nav-item nav-link logreges" style="font-weight: bold;">Register</a>
+          </div>
+        {% endif %}
+      </div>
+    </nav>
+  </div>
+</div>
+
+<section class="section main-banner " style="margin-top: 120px" id="top" data-section="section1">
+  <video autoplay muted loop id="bg-video">
+    <source src="{{ url_for('static', filename='assets/images/predict.mp4') }}" type="video/mp4" />
+    
+  </video>
+  
+
+  <div class="video-overlay header-text">
+      <div class="caption">
+          <h6>Predict Students Performance</h6>
+          <h2><em>Know</em>Lytics</h2>
+          <div class="main-button">
+              <div class="scroll-to-section"><a href="#section2">Discover more</a></div>
+          </div>
+      </div>
+  </div>
+</section>
+<section class="features">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-12">
+        <div class="features-post">
+          <div class="features-content">
+            <div class="content-show">
+              <h4><i class="fa fa-pencil"></i>Perdiction?</h4>
+            </div>
+            <div class="content-hide">
+              <p>Prediction is the process of using existing data to make informed guesses about future or unknown outcomes. In computing and data science, it's often done using machine learning models or statistical methods that learn patterns from historical data.</p>
+              <p class="hidden-sm">Prediction is the process of using existing data to make informed guesses about future or unknown outcomes. In computing and data science, it's often done using machine learning models or statistical methods that learn patterns from historical data.</p>
+              <!--<div class="scroll-to-section"><a href="#section2">More Info.</a></div>-->
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-12">
+        <div class="features-post second-features">
+          <div class="features-content">
+            <div class="content-show">
+              <h4><i class="fa fa-graduation-cap"></i>Education?</h4>
+            </div>
+            <div class="content-hide">
+              <p>Education is the structured process of acquiring knowledge, skills, values, and habits, typically through teaching, training, or research. It plays a critical role in shaping individuals and societies by enabling people to learn how to think, solve problems, and contribute meaningfully to their communities.</p>
+              <p class="hidden-sm">Education is the structured process of acquiring knowledge, skills, values, and habits, typically through teaching, training, or research. It plays a critical role in shaping individuals and societies by enabling people to learn how to think, solve problems, and contribute meaningfully to their communities.</p>
+              
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-12">
+        <div class="features-post third-features">
+          <div class="features-content">
+            <div class="content-show">
+              <h4><i class="fa fa-book"></i>Education Predict?</h4>
+            </div>
+            <div class="content-hide">
+              <p>Education prediction is the process of using data analytics and machine learning techniques to forecast academic outcomes such as student performance, dropout risk, or future learning needs. By analyzing historical and real-time data like attendance, test scores, and behavior, educators can identify patterns and make informed decisions to support students, personalize learning, and improve overall educational effectiveness.</p>
+              <p class="hidden-sm">Education prediction is the process of using data analytics and machine learning techniques to forecast academic outcomes such as student performance, dropout risk, or future learning needs. By analyzing historical and real-time data like attendance, test scores, and behavior, educators can identify patterns and make informed decisions to support students, personalize learning, and improve overall educational effectiveness.</p>
+             
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container py-5" style="margin-top: 100px;">
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
+      <div class="card roun shadow-lg border-5">
+        <div class="card-header cardheader text-white text-center">
+          <h2 class="mb-0">🎓 Student Performance Prediction</h2>
+        </div>
+        <div class="card-body cardbody p-4 ">
+          <form action="{{ url_for('predict') }}" method="POST">
+            <div class="mb-3">
+              <label for="name" class="form-label labelhead">Student Name</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Enter full name" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="student_id" class="form-label labelhead">Student ID</label>
+              <input type="text" class="form-control" id="student_id" name="student_id" placeholder="e.g., 2023-1234" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label labelhead">Email Address</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="example@student.com" required>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <label for="attendance" class="form-label labelhead">Attendance (%)</label>
+                <input type="number" class="form-control" id="attendance" name="attendance" min="0" max="100" placeholder="90" required>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <label for="homework" class="form-label labelhead">Homework (%)</label>
+                <input type="number" class="form-control" id="homework" name="homework_completion" min="0" max="100" placeholder="85" required>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <label for="test_scores" class="form-label labelhead">Test Scores</label>
+                <input type="number" class="form-control" id="test_scores" name="test_scores" placeholder="75" required>
+              </div>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-lg w-100 py-3 fw-bold shadow-sm">
+                  Predict Now
+                </button>
+              </div>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Footer Start -->
+  <div class="container-fluid position-relative footer overlay-top text-white-50 py-5" >
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-md-6 mb-5">
+              <a href="{{ url_for('index') }}" class="navbar-brand ml-lg-3">
+                <h1 class="m-0 text-uppercase">
+                  <b style="font-style: normal; color: #f5a425">Know</b><b class="text-white">Lytics</b>
+                </h1>
+              </a>
+                <p class="ml-3">KnowLytics is an innovative education prediction website that leverages data analytics and machine learning to forecast student performance and academic outcomes. By analyzing historical and real-time educational data, KnowLytics helps educators, institutions, and students make informed decisions to enhance learning strategies, improve retention rates, and personalize academic support.</p>
+            </div>
+           
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-5">
+                <h3 class="text-white mb-4">Get In Touch</h3>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>Aptect NN, Karachi, Pakistan</p>
+                <p><i class="fa fa-phone-alt mr-2"></i> +92 300 045 3661</p>
+                <p><i class="fa fa-envelope mr-2"></i> info-nn@aptechnorth.edu.pk</p>
+                <div class="d-flex justify-content-start mt-4">
+                    <a class="text-white mr-4" href="https://www.x.com"><i class="fab fa-2x fa-twitter"></i></a>
+                    <a class="text-white mr-4" href="https://www.facebook.com"><i class="fab fa-2x fa-facebook-f"></i></a>
+                    <a class="text-white mr-4" href="https://www.linkedin.com"><i class="fab fa-2x fa-linkedin-in"></i></a>
+                    <a class="text-white" href="https://www.instagram.com"><i class="fab fa-2x fa-instagram"></i></a>
+                </div>
+            </div>
+          
+            <div class="col-md-4 mb-5">
+                <h3 class="text-white mb-4"></h3>
+                <div class="d-flex flex-column justify-content-start">
+                    
+                </div>
+            </div>  <div class="col-md-4 mb-5">
+                <h3 class="text-white mb-4">Quick Links</h3>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Predict</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Contact</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Documentation</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid bottomfooter text-white-50 border-top py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center text-md-left mb-3 mb-md-0">
+                <p class="m-0">Copyright &copy; <a class="text-white" href="#">Knowlytics</a>. All Rights Reserved.
+                </p>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{{ url_for('static', filename='assets/js/isotope.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/owl-carousel.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/lightbox.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/tabs.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/video.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/slick-slider.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/custom.js') }}"></script>
+    <script>
+        //according to loftblog tut
+        $('.nav li:first').addClass('active');
+
+        var showSection = function showSection(section, isAnimate) {
+          var
+          direction = section.replace(/#/, ''),
+          reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+          reqSectionPos = reqSection.offset().top - 0;
+
+          if (isAnimate) {
+            $('body, html').animate({
+              scrollTop: reqSectionPos },
+            800);
+          } else {
+            $('body, html').scrollTop(reqSectionPos);
+          }
+
+        };
+
+        var checkSection = function checkSection() {
+          $('.section').each(function () {
+            var
+            $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+            if (topEdge < wScroll && bottomEdge > wScroll) {
+              var
+              currentId = $this.data('section'),
+              reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+              reqLink.closest('li').addClass('active').
+              siblings().removeClass('active');
+            }
+          });
+        };
+
+        $('.main-menu, .scroll-to-section').on('click', 'a', function (e) {
+          if($(e.target).hasClass('external')) {
+            return;
+          }
+          e.preventDefault();
+          $('#menu').removeClass('active');
+          showSection($(this).attr('href'), true);
+        });
+
+        $(window).scroll(function () {
+          checkSection();
+        });
+    </script>
+</body>
+</html>

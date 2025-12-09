@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Knowlytics | Home</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/templatemo-grad-school.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/owl.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/lightbox.css') }}">
+    <style>
+      .navbar-nav .nav-link {
+        font-weight: bold;
+        font-style: normal;
+        color: white;
+      }
+      .navbar-nav .nav-link:hover {
+        color: #f5a425 !important;
+      }
+      .navbar-nav .nav-link.active {
+        color: #f5a425 !important;
+      }
+      .logreges {
+        border: 2px solid #f5a425;
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: transparent; /* optional, or use a dark background */
+      }
+      .logreges:hover{
+        color: #f5a425;
+      }
+      .sessionname{
+        text-decoration: underline  #f5a425;
+      }
+      .topbar{
+        background-color: rgb(22, 39, 61);
+      }
+      .footer{
+        background-color: #0c1228
+      }
+      .bottomfooter{
+        background-color: rgb(22, 39, 61);
+      }
+      .perpreform{
+        background-color: #0c1228
+      }
+      body{
+        background-color: rgb(22, 39, 61);
+
+      }
+      .card-header h2 {
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+    
+      .form-control:focus {
+        border-color: #f5a425;
+        box-shadow: 0 0 0 0.2rem rgba(245, 164, 37, 0.25);
+      }
+    
+      .btn-primary {
+        background-color: #f5a425;
+        border-color: #f5a425;
+        font-weight: bold;
+      }
+    
+      .btn-primary:hover {
+        border-color: #d48e12;
+        background-color: #0c1228; /* keep background unchanged */
+      }
+      .cardheader{
+        background-color: #0c1228
+      }
+      .cardbody{
+        background-color: rgb(22, 39, 61);
+      }
+      .labelhead{
+        color: white;
+      }
+    </style>
+</head>
+<body>
+  <!-- Header Start -->
+    <div class=" fixed-top">
+      <div class="container-fluid topbar" >
+        <div class="row py-2 px-lg-5">
+          <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+              <div class="d-inline-flex align-items-center text-white">
+                  <small><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</small>
+                  <small class="px-3">|</small>
+                  <small><i class="fa fa-envelope mr-2"></i>info@example.com</small>
+              </div>
+          </div>
+          <div class="col-lg-6 text-center text-lg-right">
+              <div class="d-inline-flex align-items-center">
+                  <a class="text-white px-2" href="https://www.facebook.com/ ">
+                      <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a class="text-white px-2" href="https://www.x.com/ ">
+                      <i class="fab fa-twitter"></i>
+                  </a>
+                  <a class="text-white px-2" href="https://www.linkedin.com/ ">
+                      <i class="fab fa-linkedin-in"></i>
+                  </a>
+                  <a class="text-white px-2" href="https://www.instagram.com/ ">
+                      <i class="fab fa-instagram"></i>
+                  </a>
+                  <a class="text-white pl-2" href="https://www.youtube.com/ ">
+                      <i class="fab fa-youtube"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+    </div>
+  <div class="container-fluid p-0" style="background-color: #0c1228">
+    <nav class="navbar navbar-expand-lg  clearfix navbar-dark py-3 py-lg-0 px-lg-5" style="height: 80px">
+      <a href="{{ url_for('index') }}" class="navbar-brand ml-lg-3">
+        <h1 class="m-0 text-uppercase">
+          <b style="font-style: normal; color: #f5a425">Know</b><b>Lytics</b>
+        </h1>
+      </a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
+        {% if 'username' in session %}
+        <div class="navbar-nav mx-auto py-0">
+          <a href="{{ url_for('index') }}" class="nav-item nav-link active">Home</a>
+          <a href="{{ url_for('prediction') }}" class="nav-item nav-link" style="font-weight: bold;">Predict</a>
+          <a href="{{ url_for('about') }}" class="nav-item nav-link" style="font-weight: bold;">About</a>
+          <a href="{{ url_for('contact') }}" class="nav-item nav-link" style="font-weight: bold;">Contact</a>
+          <a href="{{ url_for('documentation') }}" class="nav-item nav-link" style="font-weight: bold;">Documentation</a>
+        </div>
+        <span class="navbar-text me-3 mr-5 text-white sessionname" style="font-weight: bold;">Hi, {{ session['username'] }}!</span>
+          <a href="{{ url_for('logout') }}" class="btn  py-2 px-4 d-none d-lg-block logreges"><b>Logout</b></a>
+        {% else %}
+          <div class="navbar-nav mx-auto py-0">
+            <a href="{{ url_for('login') }}" class="nav-item nav-link logreges" style="font-weight: bold;">Login</a>
+            <a href="{{ url_for('register') }}" class="nav-item nav-link logreges" style="font-weight: bold;">Register</a>
+          </div>
+        {% endif %}
+      </div>
+    </nav>
+  </div>
+</div>
+<section class="section video" data-section="section5" style="margin-top:120px">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 align-self-center">
+            <div class="container ">
+       
+                <div class="card text-center mt-4 p-4 shadow-sm">
+                    <h3 class="card-title mb-3">Performance Prediction</h3>
+                    
+                    {% if prediction == 1 %}
+                        <div class="alert alert-success" role="alert">
+                            <i class="fas fa-check-circle"></i> <strong>Good Result!</strong> The student is likely to perform well.
+                        </div>
+                    {% elif prediction == 0 %}
+                        <div class="alert alert-danger" role="alert">
+                            <i class="fas fa-times-circle"></i> <strong>Bad Result!</strong> The student may not succeed based on current indicators.
+                        </div>
+                    {% endif %}
+                    
+                    <p class="card-text">Prediction: <strong>{{ prediction }}</strong></p>
+                    <p class="card-text">Probability: <strong>{{ probability }}%</strong></p>
+        
+                    <h4 class="mt-4" style="color:rgb(29, 51, 130);"><b>Student Details:</b></h4>
+                    <p>Name: <b>{{ student.name }}</b></p>
+                    <p>Student ID: <strong>{{ student.student_id }}</strong></p>
+                    <p>Email: <strong>{{ student.email }}</strong></p>
+        
+                    <a href="{{ url_for('report', student_id=student.student_id) }}" class="btn btn-primary mt-3">Download Report <i class="fas fa-download"></i></a>
+                </div>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+    <!-- Prediction Result Section -->
+    
+    <section class="section contact" data-section="section6">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-heading">
+                <h2>Let’s Keep In Touch</h2>
+              </div>
+            </div>
+            <div class="col-md-6">
+            
+            <!-- Do you need a working HTML contact-form script?
+                        
+                        Please visit https://templatemo.com/contact page -->
+                        
+              <form id="contact" action="" method="post">
+                <div class="row">
+                  <div class="col-md-6">
+                      <fieldset>
+                        <input name="name" type="text" class="form-control" id="name" placeholder="Your Name" required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-md-6">
+                      <fieldset>
+                        <input name="email" type="text" class="form-control" id="email" placeholder="Your Email" required="">
+                      </fieldset>
+                    </div>
+                  <div class="col-md-12">
+                    <fieldset>
+                      <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
+                    </fieldset>
+                  </div>
+                  <div class="col-md-12">
+                    <fieldset>
+                      <button type="submit" id="form-submit" class="button">Send Message Now</button>
+                    </fieldset>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-6">
+              <div id="map">
+                <iframe src="https://maps.google.com/maps?width=600&height=400&hl=en&q=Aptech%20NN&t=&z=14&ie=UTF8&iwloc=B&output=embed" width="100%" height="422px" frameborder="0" style="border:0" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!--<div class="container my-5 py-5">
+        <div class="card shadow-lg border-0 rounded-lg text-white" style="background: linear-gradient(135deg, #1f2b44, #2a3a5f);">
+          <div class="card-body text-center">
+            <h2 class="card-title mb-4 text-warning">🎯 Performance Prediction</h2>
+      
+            {% if prediction == 1 %}
+              <div class="alert alert-success d-flex align-items-center justify-content-center" role="alert">
+                <i class="fas fa-check-circle fa-lg me-2"></i>
+                <strong>Great Job!</strong> The student is likely to perform well.
+              </div>
+            {% elif prediction == 0 %}
+              <div class="alert alert-danger d-flex align-items-center justify-content-center" role="alert">
+                <i class="fas fa-times-circle fa-lg me-2"></i>
+                <strong>Needs Improvement!</strong> Current indicators suggest performance issues.
+              </div>
+            {% endif %}
+      
+            <div class="mt-4">
+              <p class="lead">📊 <strong>Prediction:</strong> {{ prediction }}</p>
+              <p class="lead">📈 <strong>Probability:</strong> {{ probability }}%</p>
+            </div>
+      
+            <hr class="bg-light my-4">
+      
+            <h4 class="text-warning">👤 Student Details</h4>
+            <p><strong>Name:</strong> {{ student.name }}</p>
+            <p><strong>Student ID:</strong> {{ student.student_id }}</p>
+            <p><strong>Email:</strong> {{ student.email }}</p>
+      
+            <a href="{{ url_for('report', student_id=student.student_id) }}" class="btn btn-outline-warning mt-4 px-4 py-2">
+              <i class="fas fa-download me-2"></i>Download Report
+            </a>
+          </div>
+        </div>
+      </div>-->
+      
+   <!-- Footer Start -->
+  <div class="container-fluid position-relative footer overlay-top text-white-50 py-5" >
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-md-6 mb-5">
+              <a href="{{ url_for('index') }}" class="navbar-brand ml-lg-3">
+                <h1 class="m-0 text-uppercase">
+                  <b style="font-style: normal; color: #f5a425">Know</b><b class="text-white">Lytics</b>
+                </h1>
+              </a>
+                <p class="ml-3">KnowLytics is an innovative education prediction website that leverages data analytics and machine learning to forecast student performance and academic outcomes. By analyzing historical and real-time educational data, KnowLytics helps educators, institutions, and students make informed decisions to enhance learning strategies, improve retention rates, and personalize academic support.</p>
+            </div>
+           
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-5">
+                <h3 class="text-white mb-4">Get In Touch</h3>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>Aptect NN, Karachi, Pakistan</p>
+                <p><i class="fa fa-phone-alt mr-2"></i> +92 300 045 3661</p>
+                <p><i class="fa fa-envelope mr-2"></i> info-nn@aptechnorth.edu.pk</p>
+                <div class="d-flex justify-content-start mt-4">
+                    <a class="text-white mr-4" href="https://www.x.com"><i class="fab fa-2x fa-twitter"></i></a>
+                    <a class="text-white mr-4" href="https://www.facebook.com"><i class="fab fa-2x fa-facebook-f"></i></a>
+                    <a class="text-white mr-4" href="https://www.linkedin.com"><i class="fab fa-2x fa-linkedin-in"></i></a>
+                    <a class="text-white" href="https://www.instagram.com"><i class="fab fa-2x fa-instagram"></i></a>
+                </div>
+            </div>
+          
+            <div class="col-md-4 mb-5">
+                <h3 class="text-white mb-4"></h3>
+                <div class="d-flex flex-column justify-content-start">
+                    
+                </div>
+            </div>  <div class="col-md-4 mb-5">
+                <h3 class="text-white mb-4">Quick Links</h3>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Predict</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Contact</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Documentation</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid bottomfooter text-white-50 border-top py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center text-md-left mb-3 mb-md-0">
+                <p class="m-0">Copyright &copy; <a class="text-white" href="#">Knowlytics</a>. All Rights Reserved.
+                </p>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{{ url_for('static', filename='assets/js/isotope.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/owl-carousel.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/lightbox.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/tabs.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/video.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/slick-slider.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/custom.js') }}"></script>
+    <script>
+        //according to loftblog tut
+        $('.nav li:first').addClass('active');
+
+        var showSection = function showSection(section, isAnimate) {
+          var
+          direction = section.replace(/#/, ''),
+          reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+          reqSectionPos = reqSection.offset().top - 0;
+
+          if (isAnimate) {
+            $('body, html').animate({
+              scrollTop: reqSectionPos },
+            800);
+          } else {
+            $('body, html').scrollTop(reqSectionPos);
+          }
+
+        };
+
+        var checkSection = function checkSection() {
+          $('.section').each(function () {
+            var
+            $this = $(this),
+            topEdge = $this.offset().top - 80,
+            bottomEdge = topEdge + $this.height(),
+            wScroll = $(window).scrollTop();
+            if (topEdge < wScroll && bottomEdge > wScroll) {
+              var
+              currentId = $this.data('section'),
+              reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+              reqLink.closest('li').addClass('active').
+              siblings().removeClass('active');
+            }
+          });
+        };
+
+        $('.main-menu, .scroll-to-section').on('click', 'a', function (e) {
+          if($(e.target).hasClass('external')) {
+            return;
+          }
+          e.preventDefault();
+          $('#menu').removeClass('active');
+          showSection($(this).attr('href'), true);
+        });
+
+        $(window).scroll(function () {
+          checkSection();
+        });
+    </script>
+</body>
+</html>
