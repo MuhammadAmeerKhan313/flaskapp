@@ -1,11 +1,8 @@
-# config.py
 from pymongo import MongoClient
+import os
 
 def get_db():
-    """
-    Connects to MongoDB Atlas and returns the database object.
-    """
-    uri = "mongodb+srv://Muhammad_Ameer_Khan:Ameer123%40456@edupredictcluster.txdhy5t.mongodb.net/?retryWrites=true&w=majority"
+    uri = "mongodb+srv://Muhammad_Ameer_Khan:Ameer123%40456@edupredictcluster.txdhy5t.mongodb.net/EduPredictDB?retryWrites=true&w=majority"
     client = MongoClient(uri)
-    db = client.get_database("EduPredictDB")  # Replace with your DB name
+    db = client.get_database("EduPredictDB")
     return db
