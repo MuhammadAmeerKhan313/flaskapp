@@ -4,7 +4,7 @@ from pymongo import MongoClient
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 import numpy as np
-from fpdf import FPDF  # For generating PDF reports
+from fpdf import FPDF  # fpdf2 is fully compatible 
 from config import get_db
 from functools import wraps
 from model import predict_performance
