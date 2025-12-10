@@ -5,9 +5,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 import numpy as np
 from fpdf import FPDF  # fpdf2 is fully compatible 
-from config import get_db
 from functools import wraps
 from model import predict_performance
+from config import get_db
+
 
 # ---------------------------
 # Flask App Initialization
@@ -244,3 +245,6 @@ def report(student_id):
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
+
+
