@@ -1,14 +1,11 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for, session, flash, send_file
-from pymongo import MongoClient
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
-import numpy as np
-from fpdf import FPDF  # fpdf2 is fully compatible 
+from fpdf import FPDF  # fpdf2 recommended
 from functools import wraps
 from model import predict_performance
-from config import get_db
-
+from config import get_db  # MongoDB Atlas connection
 
 # ---------------------------
 # Flask App Initialization
@@ -19,7 +16,7 @@ app.secret_key = os.environ.get('SECRET_KEY', 'your_secret_key')
 # ---------------------------
 # Database Connection
 # ---------------------------
-db = get_db()  # Make sure get_db() is properly defined in config.py
+db = get_db()  # Make sure get_db() returns MongoDB Atlas DB object
 
 # ---------------------------
 # Login Required Decorator
@@ -41,6 +38,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/prediction')
+@login_required
 def prediction():
     return render_template('prediction.html')
 
@@ -124,10 +122,12 @@ def predict():
         homework_completion = float(request.form['homework_completion'])
         test_scores = float(request.form['test_scores'])
 
+        # Simple prediction logic
         percentage = (test_scores * 0.5) + (attendance * 0.3) + (homework_completion * 0.2)
         prediction = 1 if percentage > 60 else 0
         probability = round(percentage, 2)
 
+        # Store student data in session
         student_data = {
             'name': name,
             'student_id': student_id,
@@ -223,9 +223,9 @@ def report(student_id):
             for line in footer_info:
                 pdf.cell(200, 10, txt=line, ln=True, align='L')
 
+            # Save and send PDF
             pdf_file = f"report_{student['student_id']}_{datetime.now().strftime('%Y%m%d%H%M%S')}.pdf"
             pdf.output(pdf_file)
-
             if os.path.exists(pdf_file):
                 return send_file(pdf_file, as_attachment=True)
             else:
@@ -240,11 +240,8 @@ def report(student_id):
         return redirect(url_for('index'))
 
 # ---------------------------
-# Run App (Deploy-ready for Railway)
+# Run App (Deploy-ready for Railway / Heroku)
 # ---------------------------
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
-
-
-
